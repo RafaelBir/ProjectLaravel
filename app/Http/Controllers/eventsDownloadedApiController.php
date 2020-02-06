@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use function MongoDB\BSON\toJSON;
 
-class eventsDownloadedApiController extends Controller
+class EpisodeDownloadedApiController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | eventsDownloaded Api Controller
+    | EpisodeDownloaded Api Controller
     |--------------------------------------------------------------------------
     |
     | This controller handles the response to the request of last 7 day's
@@ -36,11 +37,11 @@ class eventsDownloadedApiController extends Controller
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return JsonResponse
      */
     protected function sevenDays()
     {
-        return toJSON("hello");
+        return new JsonResponse("hello");
         /*return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],

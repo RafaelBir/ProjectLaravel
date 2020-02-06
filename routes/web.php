@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/api/episodeRecord', 'eventsDownloadedApiController@sevenDays') ;
+Route::get('/api/episodeRecord', 'EpisodeDownloadedApiController@sevenDays');
