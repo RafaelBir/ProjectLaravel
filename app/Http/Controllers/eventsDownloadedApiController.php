@@ -2,14 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use App\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use function MongoDB\BSON\toJSON;
+use Illuminate\Support\Facades\DB;
 
 class EpisodeDownloadedApiController extends Controller
 {
@@ -24,29 +18,27 @@ class EpisodeDownloadedApiController extends Controller
     */
 
     /**
-     * Create a new controller instance.
+     * Returns an array of size 6
+     * index 0 represents for today while index 6 represents 6 days ago
+     * each index includes the list of rows (download events) of the given day
+     * all four columns are returned
      *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
      * @return JsonResponse
      */
     protected function sevenDays()
     {
-        return new JsonResponse("hello");
-        /*return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);*/
+
+        //Get the dates of the last 7 days in relation to today
+        //Query the database and put the results on an array
+        for ($x = 0; $x < 7; $x++) {
+            $currentDay = date("Y-m-d", strtotime("-" . $x . " Days"));
+            $results[$x] = DB::select("select * from episodedownloaded where occurredAt like '$currentDay%' ", array(1));
+        }
+
+
+        //Create a json response and send it
+        return new JsonResponse($results);
+
     }
 
 }
