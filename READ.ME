@@ -1,0 +1,19 @@
+This system was run on a xampp 7.3.9 Availabe at:
+https://www.apachefriends.org/download.html
+This project was made with composer v1.9.3 Availabe at:
+https://getcomposer.org/download/
+
+OS: Windows 10 Home
+Php version: 7.3.9
+Phpunit version: 8.5.2
+Laravel Framework: 6.15.0
+
+Note that some version of xampp come with an outdated phpunit
+in that case download the phpunit 8 from this link
+https://phpunit.de/getting-started/phpunit-8.html
+copy the phpunit-8.5.2.phar file to C:\xampp\php
+edit the file "phpunit.bat" to update "%PHPBIN%" "C:\xampp\php\phpunit" %*
+to : "%PHPBIN%" "C:\xampp\php\phpunit-8.5.2.phar" %*
+
+Both the test server and the default server runs on MySql but migrations are
+defined so it can work on any database supported by laravel
