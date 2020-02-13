@@ -44,7 +44,14 @@ return [
         ],
 
         'mysql' => [
-            'driver' => 'mysql',
+            'driver'    => env('DB_CONNECTION'),
+            'host'      => env('DB_HOST'),
+            'port'      => env('DB_PORT'),
+            'database'  => env('DB_DATABASE'),
+            'username'  => env('DB_USERNAME'),
+            'password'  => env('DB_PASSWORD'),
+            /* This part is deprecated (laravel 5.0 and onwards)
+             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
@@ -60,7 +67,16 @@ return [
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
+            ]) : [],*/
+        ],
+
+        'testing' => [
+            'driver'    => env('DB_CONNECTION_TEST'),
+            'host'      => env('DB_HOST_TEST'),
+            'port'      => env('DB_PORT_TEST'),
+            'database'  => env('DB_DATABASE_TEST'),
+            'username'  => env('DB_USERNAME_TEST'),
+            'password'  => env('DB_PASSWORD_TEST'),
         ],
 
         'pgsql' => [
