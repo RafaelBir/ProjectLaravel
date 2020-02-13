@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class EpisodeDownloaded_table extends Migration
+class CreateEpisodeownloadedTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class EpisodeDownloaded_table extends Migration
      */
     public function up()
     {
-        Schema::create('episodedownloaded', function (Blueprint $table) {
+        Schema::create('episode_downloads', function (Blueprint $table) {
             $table->string('eventId');
             $table->integer('episodeId');
             $table->integer('podcastId');

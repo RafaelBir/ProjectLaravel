@@ -32,7 +32,7 @@ class EpisodeDownloadedApiController extends Controller
         //Query the database and put the results on an array
         for ($x = 0; $x < 7; $x++) {
             $currentDay = date("Y-m-d", strtotime("-" . $x . " Days"));
-            $results[$x] = DB::select("select * from episodedownloaded where occurredAt like '$currentDay%' ", array(1));
+            $results[$x] = DB::select("select * from episode_downloads where occurredAt like '$currentDay%' ", array(1));
         }
 
 
